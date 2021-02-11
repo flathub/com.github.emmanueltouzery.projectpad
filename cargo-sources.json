@@ -3238,6 +3238,32 @@
     },
     {
         "type": "file",
+        "url": "https://static.crates.io/crates/structopt/structopt-0.3.21.crate",
+        "sha256": "5277acd7ee46e63e5168a80734c9f6ee81b1367a7d8772a2d765df2a3705d28c",
+        "dest": "cargo/vendor",
+        "dest-filename": "structopt-0.3.21.crate"
+    },
+    {
+        "type": "file",
+        "url": "data:%7B%22package%22%3A%20%225277acd7ee46e63e5168a80734c9f6ee81b1367a7d8772a2d765df2a3705d28c%22%2C%20%22files%22%3A%20%7B%7D%7D",
+        "dest": "cargo/vendor/structopt-0.3.21",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "file",
+        "url": "https://static.crates.io/crates/structopt-derive/structopt-derive-0.4.14.crate",
+        "sha256": "5ba9cdfda491b814720b6b06e0cac513d922fc407582032e8706e9f137976f90",
+        "dest": "cargo/vendor",
+        "dest-filename": "structopt-derive-0.4.14.crate"
+    },
+    {
+        "type": "file",
+        "url": "data:%7B%22package%22%3A%20%225ba9cdfda491b814720b6b06e0cac513d922fc407582032e8706e9f137976f90%22%2C%20%22files%22%3A%20%7B%7D%7D",
+        "dest": "cargo/vendor/structopt-derive-0.4.14",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "file",
         "url": "https://static.crates.io/crates/strum/strum-0.18.0.crate",
         "sha256": "57bd81eb48f4c437cadc685403cad539345bf703d78e63707418431cecd4522b",
         "dest": "cargo/vendor",
