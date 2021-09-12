@@ -1,0 +1,15 @@
+diff --git a/projectpad/Cargo.toml b/projectpad/Cargo.toml
+index 3c94adb..3bebacb 100644
+--- a/projectpad/Cargo.toml
++++ b/projectpad/Cargo.toml
+@@ -13,8 +13,8 @@ includedir_codegen = "0.6.0"
+ [dependencies]
+ # relm: take in style_class after 0.21
+ # can't go to 0.22 yet because of sourceview, which is not updated
+-relm = { git = "https://github.com/antoyo/relm", rev = "1e4dee58f2536857420756b533f0673e60beffa7" }
+-relm-derive = { git = "https://github.com/antoyo/relm", rev = "1e4dee58f2536857420756b533f0673e60beffa7" }
++relm = "0.21.0"
++relm-derive = "0.21.0"
+ glib = "0.10.3"
+ gio = "0.9.1"
+ gdk = "0.13.2"

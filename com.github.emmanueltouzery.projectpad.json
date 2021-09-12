@@ -27,12 +27,16 @@
   ],
   "modules": [
     {
-      "name": "gtksourceview-3.24.11",
+      "name": "gtksourceview-4.8.2",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dvapi=false"
+      ],
       "sources": [
         {
           "type": "archive",
-          "sha256": "691b074a37b2a307f7f48edc5b8c7afa7301709be56378ccf9cc9735909077fd",
-          "url": "https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz"
+          "sha256": "842de7e5cb52000fd810e4be39cd9fe29ffa87477f15da85c18f7b82d45637cc",
+          "url": "https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.2.tar.xz"
         }
       ]
     },
@@ -113,7 +117,7 @@
       "name": "projectpad",
       "buildsystem": "simple",
       "build-commands": [
-	"mkdir projectpad/fontawesome-5.13.0 && mv svgs projectpad/fontawesome-5.13.0",
+        "mkdir projectpad/fontawesome-5.13.0 && mv svgs projectpad/fontawesome-5.13.0",
         "cargo --offline fetch --manifest-path Cargo.toml --verbose",
         "cargo --offline build --release --verbose",
         "install -Dm755 ./target/release/projectpad -t /app/bin/",
@@ -125,14 +129,26 @@
         {
           "type": "git",
           "url": "https://github.com/emmanueltouzery/projectpad2.git",
-          "commit": "e0298c8483887b01908f53b8c877ef2a57018b9a"
+          "commit": "af8e7fbf7d186292f1f98c04d892f28ab029dec0"
         },
-	"cargo-sources.json",
-	{
-           "type": "archive",
-	   "sha256": "2985b9ba7aeb5cbd02f6ed4ccac0960ef5bed27269064956a6897bd7caa129f1",
-	   "url": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.0.tgz"
-	}
+        {
+          "type": "patch",
+          "path": "Cargo.lock.diff"
+        },
+        {
+          "type": "patch",
+          "path": "Cargo.toml.diff"
+        },
+        "cargo-sources.json",
+        {
+          "type": "patch",
+          "path": "relm-patch.diff"
+        },
+        {
+          "type": "archive",
+          "sha256": "2985b9ba7aeb5cbd02f6ed4ccac0960ef5bed27269064956a6897bd7caa129f1",
+          "url": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.0.tgz"
+        }
       ]
     }
   ]
