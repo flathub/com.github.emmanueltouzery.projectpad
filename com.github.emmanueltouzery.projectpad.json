@@ -1,7 +1,7 @@
 {
   "app-id": "com.github.emmanueltouzery.projectpad",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "20.08",
+  "runtime-version": "21.08",
   "sdk": "org.freedesktop.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "command": "projectpad",
@@ -78,8 +78,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://sourceforge.net/projects/p7zip/files/p7zip/16.02/p7zip_16.02_src_all.tar.bz2",
-          "sha256": "5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f"
+          "url": "https://github.com/jinfeihan57/p7zip/archive/v17.04/p7zip-v17.04.tar.gz",
+          "sha256": "ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef"
         },
         {
           "type": "shell",
@@ -88,28 +88,12 @@
           ]
         },
         {
-          "type": "patch",
-          "path" : "p7zip-gcc10.patch"
+            "type": "patch",
+            "path" : "p7zip-norar.patch"
         },
         {
-          "type": "patch",
-          "path" : "p7zip-norar.patch"
-        },
-        {
-          "type": "patch",
-          "path" : "p7zip-CVE-2016-9296.patch"
-        },
-        {
-          "type": "patch",
-          "path" : "p7zip-CVE-2017-17969.patch"
-        },
-        {
-          "type": "patch",
-          "path" : "p7zip-CVE-2018-5996.patch"
-        },
-        {
-          "type": "patch",
-          "path" : "p7zip-CVE-2018-10115.patch"
+            "type": "patch",
+            "path" : "p7zip-archlinux-reverts_issue_112.patch"
         }
       ]
     },
@@ -129,7 +113,7 @@
         {
           "type": "git",
           "url": "https://github.com/emmanueltouzery/projectpad2.git",
-          "commit": "af8e7fbf7d186292f1f98c04d892f28ab029dec0"
+          "commit": "acc9c5135691efd760b97494803995face91cc3b"
         },
         {
           "type": "patch",
