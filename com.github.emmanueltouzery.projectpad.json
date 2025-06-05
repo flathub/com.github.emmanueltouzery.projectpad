@@ -1,10 +1,10 @@
 {
   "app-id": "com.github.emmanueltouzery.projectpad",
-  "runtime": "org.freedesktop.Platform",
-  "runtime-version": "21.08",
-  "sdk": "org.freedesktop.Sdk",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "48",
+  "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
-  "command": "projectpad",
+  "command": "projectpad-gtk4",
   "finish-args": [
     "--share=ipc",
     "--socket=fallback-x11",
@@ -19,33 +19,24 @@
       "CARGO_HOME": "/run/build/projectpad/cargo"
     }
   },
-  "cleanup": [
-    "*.a",
-    "/share/gtk-doc",
-    "/include",
-    "/man"
-  ],
+  "cleanup": ["*.a", "/share/gtk-doc", "/include", "/man"],
   "modules": [
     {
-      "name": "gtksourceview-4.8.2",
+      "name": "gtksourceview-5.16.0",
       "buildsystem": "meson",
-      "config-opts": [
-        "-Dvapi=false"
-      ],
+      "config-opts": ["-Dvapi=false"],
       "sources": [
         {
           "type": "archive",
-          "sha256": "842de7e5cb52000fd810e4be39cd9fe29ffa87477f15da85c18f7b82d45637cc",
-          "url": "https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.2.tar.xz"
+          "sha256": "ab35d420102f3e8b055dd3b8642d3a48209f888189e6254d0ffb4b6a7e8c3566",
+          "url": "https://download.gnome.org/sources/gtksourceview/5.16/gtksourceview-5.16.0.tar.xz"
         }
       ]
     },
     {
       "name": "tcl-8.6.10",
       "subdir": "unix",
-      "config-opts": [
-        "--enable-shared=no"
-      ],
+      "config-opts": ["--enable-shared=no"],
       "sources": [
         {
           "type": "archive",
@@ -72,28 +63,19 @@
     {
       "name": "p7zip",
       "no-autogen": true,
-      "make-args": [
-        "7z"
-      ],
+      "make-args": ["7z"],
+      "make-install-args": ["DEST_HOME=/app"],
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/jinfeihan57/p7zip/archive/v17.04/p7zip-v17.04.tar.gz",
-          "sha256": "ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef"
-        },
-        {
-          "type": "shell",
-          "commands": [
-            "sed -i 's|/usr/local|/app|g' makefile.common"
-          ]
-        },
-        {
-            "type": "patch",
-            "path" : "p7zip-norar.patch"
-        },
-        {
-            "type": "patch",
-            "path" : "p7zip-archlinux-reverts_issue_112.patch"
+          "url": "https://github.com/p7zip-project/p7zip/archive/refs/tags/v17.05.tar.gz",
+          "sha256": "d2788f892571058c08d27095c22154579dfefb807ebe357d145ab2ddddefb1a6",
+          "x-checker-data": {
+            "type": "json",
+            "url": "https://api.github.com/repos/p7zip-project/p7zip/releases/latest",
+            "version-query": ".tag_name",
+            "url-query": "\"https://github.com/p7zip-project/p7zip/archive/refs/tags/\\($version).tar.gz\""
+          }
         }
       ]
     },
@@ -101,33 +83,21 @@
       "name": "projectpad",
       "buildsystem": "simple",
       "build-commands": [
-        "mkdir projectpad/fontawesome-5.13.0 && mv svgs projectpad/fontawesome-5.13.0",
+        "mkdir projectpad-gtk4/fontawesome-5.13.0 && mv svgs projectpad-gtk4/fontawesome-5.13.0",
         "cargo --offline fetch --manifest-path Cargo.toml --verbose",
         "cargo --offline build --release --verbose",
-        "install -Dm755 ./target/release/projectpad -t /app/bin/",
+        "install -Dm755 ./target/release/projectpad-gtk4 -t /app/bin/",
         "install -Dm644 ./flatpak/${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo/",
-        "install -Dm644 ./projectpad/${FLATPAK_ID}.desktop -t /app/share/applications/",
-        "install -Dm644 ./projectpad/${FLATPAK_ID}.svg -t /app/share/icons/hicolor/scalable/apps/"
+        "install -Dm644 ./projectpad-gtk4/${FLATPAK_ID}.desktop -t /app/share/applications/",
+        "install -Dm644 ./projectpad-gtk4/${FLATPAK_ID}.svg -t /app/share/icons/hicolor/scalable/apps/"
       ],
       "sources": [
         {
           "type": "git",
           "url": "https://github.com/emmanueltouzery/projectpad2.git",
-          "commit": "acc9c5135691efd760b97494803995face91cc3b"
-        },
-        {
-          "type": "patch",
-          "path": "Cargo.lock.diff"
-        },
-        {
-          "type": "patch",
-          "path": "Cargo.toml.diff"
+          "commit": "d17a39f348eb4ec0483153bfebe7f06e0e493fd6"
         },
         "cargo-sources.json",
-        {
-          "type": "patch",
-          "path": "relm-patch.diff"
-        },
         {
           "type": "archive",
           "sha256": "2985b9ba7aeb5cbd02f6ed4ccac0960ef5bed27269064956a6897bd7caa129f1",
