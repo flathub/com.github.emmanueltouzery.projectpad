@@ -95,7 +95,7 @@
         {
           "type": "git",
           "url": "https://github.com/emmanueltouzery/projectpad2.git",
-          "commit": "d17a39f348eb4ec0483153bfebe7f06e0e493fd6"
+          "commit": "d5a88d793f30f46fc38e63093d7ca7feb12561a8"
         },
         "cargo-sources.json",
         {
