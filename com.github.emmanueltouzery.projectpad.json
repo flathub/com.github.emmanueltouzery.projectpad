@@ -20,9 +20,12 @@
     }
   },
   "cleanup": [
-    "/include", 
+    "/include",
     "/man",
-    "/share/gtk-doc", 
+    "/share/doc",
+    "/share/gtk-doc",
+    "/share/man",
+    "*.la*,
     "*.a"
   ],
   "modules": [
