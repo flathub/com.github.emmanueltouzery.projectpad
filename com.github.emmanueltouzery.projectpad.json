@@ -25,7 +25,7 @@
     "/share/doc",
     "/share/gtk-doc",
     "/share/man",
-    "*.la*,
+    "*.la*",
     "*.a"
   ],
   "modules": [
